@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Liquidación - Pensiones Alimenticias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="contenedor-cabecera">
+            <h1>Sistema Analítico de Obligaciones Alimenticias</h1>
+            <p>Módulo de Simulación Automatizada para Liquidación de Rubros Impagos</p>
+        </div>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="bloque-formulario">
+            <h2>Registrar Nueva Obligación</h2>
+            <form id="formulario-pension">
+                <div class="grupo-campo">
+                    <label for="mes-periodo">Periodo/Mes Adeudado:</label>
+                    <input type="text" id="mes-periodo" placeholder="Ej: Marzo 2026" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="monto-fijado">Monto de la Pensión ($):</label>
+                    <input type="number" id="monto-fijado" step="0.01" placeholder="0.00" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="porcentaje-recarga">Porcentaje de Recargo por Mora (%):</label>
+                    <input type="number" id="porcentaje-recarga" step="0.1" placeholder="0%" value="0">
+                </div>
+
+                <button type="submit" id="btn-adicionar">Ingresar al Historial</button>
+            </form>
+            
+            <div class="zona-acciones">
+                <button id="btn-limpiar" class="btn-secundario">Vaciar Todo el Registro</button>
+            </div>
+        </section>
+
+        <section class="bloque-resultados">
+            <h2>Detalle de la Liquidación Procesada</h2>
+            
+            <div class="tabla-responsiva">
+                <table id="tabla-rubros">
+                    <thead>
+                        <tr>
+                            <th>Periodo</th>
+                            <th>Pensión Base</th>
+                            <th>Recargo</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla">
+                        <tr id="fila-vacia">
+                            <td colspan="4" class="texto-alerta">No se han registrado rubros en la simulación actual.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel-totales">
+                <div class="linea-total">
+                    <span>Total de Capital Base:</span>
+                    <span id="total-capital">$0.00</span>
+                </div>
+                <div class="linea-total">
+                    <span>Total Recargos por Mora:</span>
+                    <span id="total-mora">$0.00</span>
+                </div>
+                <div class="linea-total final">
+                    <span>LIQUIDACIÓN TOTAL ACUMULADA:</span>
+                    <span id="total-consolidado">$0.00</span>
+                </div>
+            </div>
+
+            <div id="alerta-legal" class="alerta-oculta"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Plataforma de Simulación Legal Avanzada | Desarrollo Frontend Profesional</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
